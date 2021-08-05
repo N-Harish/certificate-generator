@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="./static/quiz_result/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700">
+    <link rel="stylesheet" href="./static/quiz_result/css/Button-Change-Text-on-Hover.css">
+    <link rel="stylesheet" href="./static/quiz_result/css/Data-Table-with-Search-Sort-Filter-and-Zoom-using-TableSorter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="./static/quiz_result/css/Pulse-Button-on-Hover-1.css">
+    <link rel="stylesheet" href="./static/quiz_result/css/Pulse-Button-on-Hover.css">
+    <link rel="stylesheet" href="./static/quiz_result/css/styles.css">
+</head>
+
+<body style="color: var(--danger);">
+    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark navbar-custom">
+        <div class="container"><a class="navbar-brand" href="#">Job Advisor</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarResponsive"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/best_career_path">Best Career Path</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/aboutus">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/feedback">Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h1 style="text-align: center;color: rgb(52,58,64);padding-top: 80px;padding-bottom: 10px;">QUIZ RESULT</h1>
+    <div class="container">
+        <div class="card" id="TableSorterCard">
+            <div class="row">
+                <div class="col-12">
+                    <div>
+                        <table class="table table tablesorter" id="ipi-table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th style="text-align: center;">Subject</th>
+                                    <th style="text-align: center;">SCORE</th>
+                                    <th style="text-align: center;">Subjectwise PERCENT</th>
+                                    <th style="text-align: center;">Subjectwise GRADE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="text-align: center;">Maths</td>
+                                    <td style="text-align: center;">{{ math_score}}/8</td>
+                                    <td style="text-align: center;">{{ math_percent}}%</td>
+                                    <td style="text-align: center;">{{ math_review }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">Physics</td>
+                                    <td style="text-align: center;">{{ physics_score }}/4</td>
+                                    <td style="text-align: center;">{{ physics_percent }}%</td>
+                                    <td style="text-align: center;">{{ physics_review }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">Chemistry</td>
+                                    <td style="text-align: center;">{{ chemistry_score }}/4</td>
+                                    <td style="text-align: center;">{{ chemistry_percent }}%</td>
+                                    <td style="text-align: center;">{{ chemistry_review }}</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">Biology</td>
+                                    <td style="text-align: center;">{{ biology_score }}/4</td>
+                                    <td style="text-align: center;">{{ biology_percent }}%</td>
+                                    <td style="text-align: center;">{{ biology_review }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" role="dialog" tabindex="-1" id="tablehelpModal" aria-labeledby="tablehelpModal" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Table Filtering Options</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:1%">Priority</th>
+                                            <th style="width:9%">Operator</th>
+                                            <th style="width:30%">Description</th>
+                                            <th style="width:60%">Examples</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td><code>|</code>&nbsp;or&nbsp;&nbsp;<code>OR</code><br></td>
+                                            <td>Logical "or" (Vertical bar). Filter the column for content that matches text from either side of the bar.<br></td>
+                                            <td><code>&lt;20 | &gt;40</code>&nbsp;(matches a column cell with either "&lt;20" or "&gt;40")<br></td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td><code>&amp;&amp;</code>&nbsp;or <code>AND</code><br></td>
+                                            <td>Logical "and". Filter the column for content that matches text from either side of the operator.<br></td>
+                                            <td><code>&gt;20 &amp;&amp; &gt;40</code>&nbsp;(matches a column cell that contains both "&gt;20" and "&lt;40")<br></td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td><code>/\d/</code><br></td>
+                                            <td>Add any regex to the query to use in the query ("mig" flags can be included&nbsp;<code>/\w/mig</code>)<br></td>
+                                            <td><code>/b[aeiou]g/i</code>&nbsp;(finds "bag", "beg", "BIG", "Bug", etc);<code>&gt;/r$/</code>&nbsp;(matches text that ends with an "r")<br></td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td><code>&lt; &lt;= &gt;= &gt;</code><br></td>
+                                            <td>Find alphabetical or numerical values less than or greater than or equal to the filtered query .<br></td>
+                                            <td><code>&lt;=10</code>&nbsp;(find values greater than or equal to 10)<br></td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td><code>!</code>&nbsp;or&nbsp;<code>!=</code><br></td>
+                                            <td>Not operator, or not exactly match. Filter the column with content that&nbsp;<strong>do not</strong>&nbsp;match the query. Include an equal (<code>=</code>), single (<code>'</code>) or double quote (<code>"</code>) to exactly&nbsp;<em>not</em>&nbsp;match a filter.<br><br><br></td>
+                                            <td><code>!e</code>&nbsp;(find text that doesn't contain an "e");<code>!"ELISA"</code>&nbsp;(find content that does not exactly match "ELISA")<br></td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td><code>"</code>&nbsp;or&nbsp;<code>=</code><br></td>
+                                            <td>To exactly match the search query, add a quote, apostrophe or equal sign to the beginning and/or end of the query<br></td>
+                                            <td><code>abc"</code>&nbsp;or&nbsp;<code>abc=</code>&nbsp;(exactly match "abc")<br></td>
+                                        </tr>
+                                        <tr>
+                                            <td>7</td>
+                                            <td><code>-</code>&nbsp;or <code>to</code><br></td>
+                                            <td>Find a range of values. Make sure there is a space before and after the dash (or the word "to").<br></td>
+                                            <td><code>10 - 30</code>&nbsp;or&nbsp;<code>10 to 30</code>&nbsp;(match values between 10 and 30)<br></td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td><code>?</code><br></td>
+                                            <td>Wildcard for a single, non-space character.<br></td>
+                                            <td><code>S?c</code>&nbsp;(finds "Sec" and "Soc", but not "Seec")<br></td>
+                                        </tr>
+                                        <tr>
+                                            <td>8</td>
+                                            <td><code>*</code><br></td>
+                                            <td>Wildcard for zero or more non-space characters.<br></td>
+                                            <td><code>B*k</code>&nbsp;(matches "Black" and "Book")<br></td>
+                                        </tr>
+                                        <tr>
+                                            <td>9</td>
+                                            <td><code>~</code><br></td>
+                                            <td>Perform a fuzzy search (matches sequential characters) by adding a tilde to the beginning of the query<br></td>
+                                            <td><code>~bee</code>&nbsp;(matches "Bruce Lee" and "Brenda Dexter"), or&nbsp;<code>~piano</code>&nbsp;(matches "Philip Aaron Wong")<br></td>
+                                        </tr>
+                                        <tr>
+                                            <td>10</td>
+                                            <td>text<br></td>
+                                            <td>Any text entered in the filter will&nbsp;<strong>match</strong>&nbsp;text found within the column<br></td>
+                                            <td><code>abc</code>&nbsp;(finds "abc", "abcd", "abcde", etc);<code>SEC</code>&nbsp;(finds "SEC" and "Analytical SEC")<br></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer"><button class="btn btn-danger" type="button" data-dismiss="modal">Close</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p style="color: rgb(52,58,64);padding-left: 30px;font-size: 25px;padding-top: 20px;font-family: Adamina, serif;">Your Total Score = {{ final_score }}</p>
+    <p style="padding-top: 10px;padding-left: 30px;font-size: 25px;color: rgb(52,58,64);">{{ cleared }}</p>
+
+    <form style="padding-top: 15px;" method="post" action="{{ url_for('quiz_result_response') }}">
+        <p style="padding-left: 30px;color: rgb(52,58,64);font-size: 39px;">Congratulations You Have Earned Certificate</p>
+        <div style="padding-left: 30px;padding-bottom: 15px;"><label style="color: rgb(52,58,64);">Enter Your Name:</label><input class="form-control form-control" type="text" name="username"><div>
+        <div style="text-align: center;padding: 25px;" class="form-group">
+            <button class="btn btn-primary" type="submit">Submit</button></div>
+    </form>
+
+
+
+    <h1>You Have Scored Less Than 75% in {{ len_sub }} Subject{{ s }}:</h1>
+
+
+
+    <p style="padding-top: 15px;font-size: 25px;">}<span style="padding-left: 25px;">{{ link }}</span></p>
+
+    <script src="./static/quiz_result/js/jquery.min.js"></script>
+    <script src="./static/quiz_result/bootstrap/js/bootstrap.min.js"></script>
+    <script src="./static/quiz_result/js/Data-Table-with-Search-Sort-Filter-and-Zoom-using-TableSorter.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
