@@ -2,13 +2,13 @@ import pyrebase
 from PIL import Image, ImageFont, ImageDraw
 
 firebaseConfig = {
-    "apiKey": "AIzaSyDBY244uJT0JJofLhKhJ2mRXLC1yJLM7Dk",
-    "authDomain": "quiz-9343a.firebaseapp.com",
-    "databaseURL": "https://quiz-9343a-default-rtdb.firebaseio.com",
-    "projectId": "quiz-9343a",
-    "storageBucket": "quiz-9343a.appspot.com",
-    "messagingSenderId": "72561473259",
-    "appId": "1:72561473259:web:50f4db1717f17a5ef070ae",
+    "apiKey": <your API key>,
+    "authDomain": <your auth domain>,
+    "databaseURL": <your db url>,
+    "projectId": <your firebase project id>,
+    "storageBucket": <your firebase storage bucket>,
+    "messagingSenderId": <your sender id>,
+    "appId": <your app id>,
 }
 
 
